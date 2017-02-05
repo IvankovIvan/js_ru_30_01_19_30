@@ -1,0 +1,11 @@
+1. const {article} = this.props зачем тут {}?
+2. Поясните как они связаны
+    state = {
+            isOpen: false
+        }
+    и
+
+    this.setState({
+                isOpen: !this.state.isOpen
+            })
+    Как система понимает что setState это и есть state
