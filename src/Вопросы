@@ -1,4 +1,4 @@
-1. const {article} = this.props зачем тут {}?
+1. const {article} = this.props зачем тут {}? - destructive assignment, ES6
 2. Поясните как они связаны
     state = {
             isOpen: false
@@ -9,3 +9,5 @@
                 isOpen: !this.state.isOpen
             })
     Как система понимает что setState это и есть state
+    
+    ты в setState передаешь объект описывающий новое состояние. А this.state хранит текущее
