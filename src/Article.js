@@ -17,6 +17,7 @@ export default class Article extends Component {
     render() {
         const {article} = this.props
         let commentList = null;
+        //Я б эту проверку спрятал в CommentList
         if (article.comments)
             commentList = article.comments;
         console.log('---', 123)
@@ -29,6 +30,7 @@ export default class Article extends Component {
         )
     }
 
+    //ты б и commentList здесь мог получить
     getBody(commentList) {
         if (!this.state.isOpen) return null
 
