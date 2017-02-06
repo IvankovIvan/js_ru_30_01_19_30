@@ -11,6 +11,7 @@ export default class CommentList extends Component {
 
     constructor(props) {
         super(props);
+        //вот этого не надо
         this.props = props;
     }
     render() {
