@@ -7,12 +7,20 @@ class Article extends Component {
         article: PropTypes.shape({
             title: PropTypes.string.isRequired,
             text: PropTypes.string.isRequired,
-            comments: PropTypes.array
-        }).isRequired
+            comments: PropTypes.arrayOf(PropTypes.shape({
+                comment: PropTypes.shape({
+                    id: PropTypes.number.isRequired,
+                    text: PropTypes.string.isRequired,
+                    user: PropTypes.string.isRequired
+                })
+            }))
+        }).isRequired,
+        isOpen: PropTypes.bool.isRequired,
+        toggleOpen: PropTypes.func.isRequired
     }
 
     render() {
-        const {article, toggleOpen} = this.props
+        const {article, toggleOpen} = this.props;
         return (
             <div>
                 <h3 onClick={toggleOpen}>{article.title}</h3>
@@ -22,7 +30,7 @@ class Article extends Component {
     }
 
     getBody() {
-        const {isOpen, article: {text, comments}} = this.props
+        const {isOpen, article: {text, comments}} = this.props;
         if (!isOpen) return null
 
         return (

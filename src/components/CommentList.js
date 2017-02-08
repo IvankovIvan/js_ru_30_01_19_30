@@ -1,7 +1,17 @@
-import React, { Component } from 'react'
+import React, { Component, PropTypes } from 'react'
 import Comment from './Comment'
 
 class CommentList extends Component {
+    static propTypes = {
+        comments: PropTypes.arrayOf(PropTypes.shape({
+            comment: PropTypes.shape({
+                id: PropTypes.number.isRequired,
+                text: PropTypes.string.isRequired,
+                user: PropTypes.string.isRequired
+            })
+        })).isRequired
+    };
+
     static defaultProps = {
         comments: []
     }
@@ -33,7 +43,7 @@ class CommentList extends Component {
     }
 
     getBody() {
-        if (!this.state.isOpen) return null
+        if (!this.state.isOpen) return null;
 
         const {comments} = this.props
         if (!comments.length) return <h3>No comments yet</h3>
