@@ -4,6 +4,8 @@ import AccordionComponent from '../decorators/accordionComponent'
 
 class ArticleList extends Component {
     static propTypes = {
+        //сюда еще и из декоратора данные приходят
+        //без фанатизма с описанием)
         articles: PropTypes.arrayOf(PropTypes.shape({
             article: PropTypes.shape({
                 title: PropTypes.string.isRequired,
