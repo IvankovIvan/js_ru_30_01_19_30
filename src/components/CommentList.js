@@ -22,8 +22,10 @@ class CommentList extends Component {
     }
 
     state = {
-        isOpen: false
-    }
+        isOpen: false,
+        user : '',
+        comment : ''
+    };
 
     render() {
         const actionText = this.state.isOpen ? 'hide' : 'show'
@@ -31,9 +33,38 @@ class CommentList extends Component {
             <div>
                 <a href="#" onClick={this.toggleOpen}>{actionText} comments</a>
                 {this.getBody()}
+                <div>
+                    User: <input type="text" value={this.state.user} onChange={this.handleInputChange('user')}/>
+                    Comment: <input type="text" value={this.state.comment} onChange={this.handleInputChange('comment')}/>
+                    <input type="button" name="submit" value="submit" id="" onClick={this.handleClick}/>
+                </div>
+
             </div>
         )
     }
+
+    handleInputChange = (name) => (ev) => {
+
+        //**************
+        // эти 2 if можно ли написать аккуратней
+        //****************
+        if (name == 'user')
+            this.setState({
+                user: ev.target.value
+            });
+        if (name == 'comment')
+            this.setState({
+                comment: ev.target.value
+            });
+    };
+
+    handleClick = ev => {
+        console.log(this.state.user, this.state.comment);
+        this.setState({
+            user: '',
+            comment: ''
+        })
+    };
 
     getBody() {
         if (!this.state.isOpen) return null
