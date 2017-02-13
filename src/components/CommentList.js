@@ -29,6 +29,7 @@ class CommentList extends Component {
 
     render() {
         const actionText = this.state.isOpen ? 'hide' : 'show'
+        //форму стоит вынести в отдельный компонент
         return (
             <div>
                 <a href="#" onClick={this.toggleOpen}>{actionText} comments</a>
@@ -48,6 +49,11 @@ class CommentList extends Component {
         //**************
         // эти 2 if можно ли написать аккуратней
         //****************
+        /*
+        this.setState({
+            [name]: ev.target.value
+        })
+        */
         if (name == 'user')
             this.setState({
                 user: ev.target.value
