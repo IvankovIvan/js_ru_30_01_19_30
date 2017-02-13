@@ -6,7 +6,7 @@ import 'react-select/dist/react-select.css'
 import DayPicker, {DateUtils} from 'react-day-picker'
 import 'react-day-picker/dist/style.css'
 
-
+//компонент становится слишком большим, пора разбивать на более мелкие
 class App extends Component {
     state = {
         user: '',
