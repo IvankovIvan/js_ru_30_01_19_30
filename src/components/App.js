@@ -6,6 +6,7 @@ import DateRange from './DateRange'
 import 'react-select/dist/react-select.css'
 import Counter from './Counter'
 import {connect} from 'react-redux'
+import {addArticleNameFilter, articleSearch} from '../AC'
 
 class App extends Component {
     state = {
@@ -24,6 +25,7 @@ class App extends Component {
                 <Counter/>
                 User: <input type="text" value={this.state.user} onChange={this.handleUserChange}/>
                 <Select options = {options} onChange={this.handleSelectChange} value={this.state.selection} multi/>
+                <a href="#" onClick={this.handleSearch}>Search</a>
                 <DateRange />
                 <ArticleList articles={articles}/>
                 <Chart articles={articles}/>
@@ -31,7 +33,15 @@ class App extends Component {
         )
     }
 
-    handleSelectChange = selection => this.setState({ selection })
+    handleSearch = (ev) => {
+        ev.preventDefault();
+        this.props.articleSearch(this.props.articleNameFilter);
+    };
+
+    handleSelectChange = selection => {
+        this.setState({ selection });
+        this.props.addArticleNameFilter(selection.map(option => option.value));
+    };
 
     handleUserChange = (ev) => {
         if (ev.target.value.length < 10) {
@@ -47,5 +57,7 @@ App.propTypes = {
 }
 
 export default connect(state => ({
-    articles: state.articles
-}))(App)
+    articles: state.articles,
+    articleNameFilter: state.articleNameFilter
+
+}), {addArticleNameFilter, articleSearch })(App)
