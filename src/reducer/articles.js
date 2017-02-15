@@ -9,6 +9,9 @@ export default (articles = defaultArticles, action) => {
             return articles.filter(article => article.id !== payload.id)
 
     }
+            //вспомни, что редюсеры - чистые функции, нельзя брать внешние переменные
+            //по сути ты удаляешь статьи, а должен хранить здесь список всех статей, а фильтровать где-то в другом месте(например в коннекте)
+    //даже если решил так делать - лучше по action.type проверять - if (payload) очень плохая идея
     let articlesReturn = defaultArticles;
     if (payload) {
         if (payload.articleIds && payload.articleIds.length > 0) {
