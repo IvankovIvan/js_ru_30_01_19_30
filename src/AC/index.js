@@ -29,10 +29,10 @@ export function addDatePeriodFilter({from, to}) {
     }
 }
 
-export function articleSearch(articleIds) {
+export function articleSearch(articleIds, {from, to}) {
     return {
         type: ARTICLE_FILTER,
-        payload: { articleIds }
+        payload: { articleIds, from, to }
     }
 }
 

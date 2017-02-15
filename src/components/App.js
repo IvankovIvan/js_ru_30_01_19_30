@@ -12,14 +12,14 @@ class App extends Component {
     state = {
         user: '',
         selection: null
-    }
+    };
 
     render() {
-        const {articles} = this.props
+        const {articles} = this.props;
         const options = articles.map(article => ({
             label: article.title,
             value: article.id
-        }))
+        }));
         return (
             <div>
                 <Counter/>
@@ -35,7 +35,7 @@ class App extends Component {
 
     handleSearch = (ev) => {
         ev.preventDefault();
-        this.props.articleSearch(this.props.articleNameFilter);
+        this.props.articleSearch(this.props.articleNameFilter, this.props.datePeriodFilter);
     };
 
     handleSelectChange = selection => {
@@ -54,10 +54,11 @@ class App extends Component {
 
 App.propTypes = {
     articles: PropTypes.array.isRequired
-}
+};
 
 export default connect(state => ({
     articles: state.articles,
-    articleNameFilter: state.articleNameFilter
+    articleNameFilter: state.articleNameFilter,
+    datePeriodFilter: state.datePeriodFilter
 
 }), {addArticleNameFilter, articleSearch })(App)
