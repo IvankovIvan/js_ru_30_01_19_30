@@ -14,6 +14,6 @@ export default store => next => action => {
     };
     console.log('8909809809809809808')
     let i = idNew();
-    let id = i();
+    let id = '_' + Math.random().toString(36).substr(2, 9);
     next({...rest, idNew: id});
 }
