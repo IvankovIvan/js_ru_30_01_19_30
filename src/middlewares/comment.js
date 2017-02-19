@@ -1,10 +1,11 @@
 import {IDENTITY_NEW} from '../constants'
 
 export default store => next => action => {
+    //почему?
     if (!action.callAPI) return next(action);
 
     const {callAPI, ...rest} = action;
-
+    //Зачем тебе callAPI, мидлвара же совсем другим занимается, не путай себя, заведи другой флажок
     if (callAPI != IDENTITY_NEW) return next(action);
     let idNew = () => {
         let id = 9;
