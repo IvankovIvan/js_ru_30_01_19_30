@@ -28,6 +28,7 @@ export default (state = defaultState, action) => {
         {
             const {articleId} = payload
             let stateNew = {...state}
+            //вот здесь ты, на самом деле, мутируешь стейт. Все просто меняется по ссылке 
             stateNew.entities[articleId].comments.push(action.idNew);
             console.log('-------->', stateNew);
             return stateNew;
