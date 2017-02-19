@@ -1,4 +1,6 @@
 import React, { Component, PropTypes } from 'react'
+import {connect} from 'react-redux'
+import {identityNew} from '../AC/'
 
 class NewCommentForm extends Component {
     static propTypes = {
@@ -13,15 +15,17 @@ class NewCommentForm extends Component {
         this.setState({
             [field]: ev.target.value
         })
-    }
+    };
 
     handleSubmit = ev => {
-        ev.preventDefault()
+        ev.preventDefault();
+        this.props.identityNew(this.state, this.props.aritcleId);
+
         this.setState({
             user: '',
             text: ''
         })
-    }
+    };
 
     render() {
         return (
@@ -34,4 +38,4 @@ class NewCommentForm extends Component {
     }
 }
 
-export default NewCommentForm
+export default connect(null, {identityNew})(NewCommentForm);

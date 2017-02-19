@@ -1,4 +1,4 @@
-import {DELETE_ARTICLE, LOAD_ALL_ARTICLES, FAIL, SUCCESS, START} from '../constants'
+import {DELETE_ARTICLE, LOAD_ALL_ARTICLES, FAIL, SUCCESS, START,IDENTITY_NEW} from '../constants'
 import {arrayToMap} from '../utils'
 
 const defaultState = {
@@ -24,6 +24,14 @@ export default (state = defaultState, action) => {
                 entities: arrayToMap(action.response),
                 isLoading: false
             }
+        case IDENTITY_NEW:
+        {
+            const {aticleId} = payload
+            state.entities[aticleId].comments.push(action.idNew);
+            console.log('-------->', state);
+            return state;
+        }
+
     }
 
     return state

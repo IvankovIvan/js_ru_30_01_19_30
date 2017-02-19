@@ -1,4 +1,4 @@
-import {INCREMENT, DELETE_ARTICLE, CHANGE_DATE_RANGE, CHANGE_SELECTION, LOAD_ALL_ARTICLES, START, SUCCESS, FAIL} from '../constants'
+import {INCREMENT, DELETE_ARTICLE, CHANGE_DATE_RANGE, CHANGE_SELECTION, LOAD_ALL_ARTICLES, START, SUCCESS, FAIL,IDENTITY_NEW} from '../constants'
 import $ from 'jquery'
 
 
@@ -56,4 +56,13 @@ export function loadAllArticlesThunk() {
                 }))
         }, 1000)
     }
+}
+
+export function identityNew(commentNew, aticleId) {
+    return {
+        type: IDENTITY_NEW,
+        callAPI: IDENTITY_NEW,
+        payload: {commentNew, aticleId}
+    }
+
 }
