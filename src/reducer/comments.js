@@ -10,13 +10,15 @@ export default (state = defaultState, action) => {
 
     switch (type) {
         case IDENTITY_NEW: {
+            console.log(';kjhkjhkjhkjhkjhk');
             const {user, text} = payload;
             const obj = {id: action.idNew, user, text};
-            //console.log('--------->', obj);
-            state[obj.id] = obj;
+            console.log('--------->', obj);
+            let stateNew = {...state};
+            stateNew[obj.id] = obj;
             //console.log('----------->',state);
             //console.log('----------->',mapToArr(state));
-            return state;
+            return stateNew;
 
         }
     }

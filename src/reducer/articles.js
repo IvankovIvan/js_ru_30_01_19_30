@@ -26,10 +26,11 @@ export default (state = defaultState, action) => {
             }
         case IDENTITY_NEW:
         {
-            const {aticleId} = payload
-            state.entities[aticleId].comments.push(action.idNew);
-            console.log('-------->', state);
-            return state;
+            const {articleId} = payload
+            let stateNew = {...state}
+            stateNew.entities[articleId].comments.push(action.idNew);
+            console.log('-------->', stateNew);
+            return stateNew;
         }
 
     }

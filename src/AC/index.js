@@ -58,11 +58,11 @@ export function loadAllArticlesThunk() {
     }
 }
 
-export function identityNew(commentNew, aticleId) {
+export function identityNew(commentNew, articleId) {
     return {
         type: IDENTITY_NEW,
         callAPI: IDENTITY_NEW,
-        payload: {commentNew, aticleId}
+        payload: {user: commentNew.user, text: commentNew.text, articleId}
     }
 
 }

@@ -12,6 +12,7 @@ export default store => next => action => {
             return ++id;
         };
     };
+    console.log('8909809809809809808')
     let i = idNew();
     let id = i();
     next({...rest, idNew: id});
