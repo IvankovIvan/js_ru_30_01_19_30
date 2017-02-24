@@ -1,14 +1,18 @@
-import React, { PropTypes } from 'react'
+import React, { PropTypes, Component } from 'react'
 import {connect} from 'react-redux'
+import {loadComment} from '../AC'
 
-function Comment(props) {
-    const {text, user} = props.comment
-    return (
-        <div>
-            {text}
-            {user && <b> by {user}</b>}
-        </div>
-    )
+class Comment extends Component {
+
+    render() {
+        const {text, user} = this.props.comment;
+        return (
+            <div>
+                {text}
+                {user && <b> by {user}</b>}
+            </div>
+        )
+    }
 }
 
 Comment.propTypes = {
@@ -21,6 +25,7 @@ Comment.propTypes = {
 
 export default connect((state, props) => {
     const {id} = props
+    //const comment = state.comments.get(id)
     const comment = state.comments.get(id)
     return { comment }
 })(Comment)
