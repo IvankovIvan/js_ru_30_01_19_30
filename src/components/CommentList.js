@@ -1,6 +1,9 @@
 import React, { Component, PropTypes } from 'react'
 import Comment from './Comment'
 import NewCommentForm from './NewCommentForm'
+import {loadComment} from '../AC'
+import {connect} from 'react-redux'
+import Loader from './Loader'
 
 class CommentList extends Component {
     static propTypes = {
@@ -9,6 +12,13 @@ class CommentList extends Component {
 
     state = {
         isOpen: false
+    }
+
+    componentWillUpdate(nextProps, nextState) {
+        const {id, isLoadingComments, isLoadedComments} = nextProps.article;
+        if (!this.state.isOpen && nextState.isOpen && !isLoadingComments
+                && !isLoadedComments)
+            this.props.loadComment(id);
     }
 
     render() {
@@ -23,18 +33,23 @@ class CommentList extends Component {
 
     getBody() {
         const {isOpen} = this.state;
-        if (!isOpen) return null
+        if (!isOpen) return null;
 
-        const {comments = [], id} = this.props.article
+        const {comments = [], id, isLoadedComments} = this.props.article;
+
+console.log("lklklklklkl", comments);
+        if (!isLoadedComments)
+            return <Loader/>
+
         if (!comments.length) return (<div>
             <h3>No comments yet</h3>
             <NewCommentForm articleId={id}/>
         </div>)
 
-        const commentItems = comments.map(id => <li key={id}><Comment id={id} /></li>)
+        const commentItems = comments.map(id => <li key={id}><Comment id={id} isOpen={isOpen}/></li>)
         return <div>
             <ul>{commentItems}</ul>
-            <NewCommentForm articleId={id} isOpen={isOpen} />
+            <NewCommentForm articleId={id}  />
         </div>
     }
 
@@ -46,4 +61,4 @@ class CommentList extends Component {
     }
 }
 
-export default CommentList
+export default connect(null, {loadComment}) ( CommentList)
