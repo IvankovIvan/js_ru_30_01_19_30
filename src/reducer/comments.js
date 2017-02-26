@@ -5,9 +5,9 @@ import {Record} from 'immutable'
 import {DefaultReducerState} from './helpers'
 
 const CommentModel = Record({
-    id: 0,
-    user: '',
-    text: ''
+    id: null,
+    user: null,
+    text: null
 });
 
 const defaultState = DefaultReducerState();
@@ -20,10 +20,9 @@ export default (state = defaultState, action) => {
             return state.set(randomId, {...payload.comment, id: randomId});
 
         case  LOAD_COMMENT + SUCCESS:
-            return state.set('entities', arrayToMap(response, CommentModel))
-
-
-            //const myNewMap = myMap.updateIn(['nested', 'someKey'], arr => arr.push('bye'));
+            let newState = DefaultReducerState();
+            newState = newState.set('entities', arrayToMap(response, CommentModel));
+            return state.mergeDeep(newState);
     }
 
     return state;

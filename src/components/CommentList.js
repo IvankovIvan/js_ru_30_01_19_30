@@ -37,7 +37,6 @@ class CommentList extends Component {
 
         const {comments = [], id, isLoadedComments} = this.props.article;
 
-console.log("lklklklklkl", comments);
         if (!isLoadedComments)
             return <Loader/>
 

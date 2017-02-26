@@ -24,9 +24,6 @@ Comment.propTypes = {
 
 export default connect((state, props) => {
     const {id} = props
-    //const comment = state.comments.get(id)
-    console.log('vbvbvbvbvbvbvbb', state.comments)
     const comment = state.comments.entities.get(id)
-    console.log('vbvbvbvbvbvbvbb', comment)
     return { comment }
 })(Comment)
