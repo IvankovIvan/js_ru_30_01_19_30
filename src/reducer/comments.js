@@ -22,6 +22,7 @@ export default (state = defaultState, action) => {
         case  LOAD_COMMENT + SUCCESS:
             let newState = DefaultReducerState();
             newState = newState.set('entities', arrayToMap(response, CommentModel));
+            //можешь просто .mergeIn использовать
             return state.mergeDeep(newState);
     }
 
