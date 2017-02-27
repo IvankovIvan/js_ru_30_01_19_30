@@ -46,6 +46,7 @@ export default (state = defaultState, action) => {
             return state.setIn(['entities', payload.id, 'isLoadingComments'], true)
 
         case LOAD_COMMENT + SUCCESS:
+            //забыл isLoadingComments убрать
             return state.setIn(['entities', payload.id, 'isLoadedComments'], true)
     }
 
