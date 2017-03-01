@@ -8,6 +8,7 @@ import ArticlePage from './routeHandlers/ArticlePage'
 import NotFoundPage from './routeHandlers/NotFoundPage'
 import AuthorizedOnlyPage from './routeHandlers/AuthorizedOnlyPage'
 import ErrorPage from './routeHandlers/ErrorPage'
+import Comments from './routeHandlers/Comments'
 import store from './store'
 
 export default (
@@ -15,6 +16,9 @@ export default (
         <Route path="/" component={Root}>
             <Route path="articles" component={ArticleList}>
                 <Route path=":id" component={ArticlePage} />
+            </Route>
+            <Route path="comments" component={Comments} >
+                <Route path=":page" component={Comments}/>
             </Route>
             <Route path="filters" component={Filters}/>
             <Route path="counter" component={Counter}/>
