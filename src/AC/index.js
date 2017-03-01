@@ -83,9 +83,11 @@ export function loadArticleComments(articleId) {
     }
 }
 
-export function loadComments(offset) {
+export function loadComments(page) {
+    const offset = (page - 1) * 5;
     return {
         type: LOAD_COMMENTS,
+        payload: { page },
         callAPI: `/api/comment?limit=5&offset=${offset}`
 
     }

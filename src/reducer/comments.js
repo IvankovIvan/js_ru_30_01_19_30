@@ -1,4 +1,4 @@
-import {ADD_COMMENT, LOAD_ARTICLE_COMMENTS, SUCCESS} from '../constants'
+import {ADD_COMMENT, LOAD_ARTICLE_COMMENTS, SUCCESS, LOAD_COMMENTS} from '../constants'
 import {arrayToMap} from '../utils'
 import {DefaultReducerState} from './helpers'
 import {Record} from 'immutable'
@@ -21,6 +21,10 @@ export default (state = defaultState, action) => {
 
         case LOAD_ARTICLE_COMMENTS + SUCCESS:
             return state.mergeIn(['entities'], arrayToMap(response, CommentModel))
+
+        case LOAD_COMMENTS + SUCCESS:
+            const {records} = response;
+            return state.mergeIn(['entities'], arrayToMap(records, CommentModel))
     }
 
     return state

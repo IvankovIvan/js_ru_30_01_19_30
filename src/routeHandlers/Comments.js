@@ -4,21 +4,26 @@ import CommentPage from '../components/CommentPage'
 
 class Comments extends Component {
 
-    componentDidMount() {
+    /*componentDidMount() {
         if (!this.props.params.page) {
             browserHistory.replace('/comments/1')
         }
-    }
+    }*/
 
-    componentWillUpdate(nextProps, nextState)
+    /*componentWillUpdate(nextProps, nextState)
     {
         if (!nextProps.params.page) {
             browserHistory.replace('/comments/1')
         }
-    }
+    }*/
 
     render() {
-        return <CommentPage page={this.props.params.page} key={this.props.params.page}/>
+
+        let id = this.props.params.page;
+        if (!id)
+            id = 1;
+
+        return <CommentPage page={id} key={id}/>
     }
 }
 
