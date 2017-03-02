@@ -5,6 +5,7 @@ import Comment from './Comment'
 
 class CommentPage extends Component {
     componentDidMount() {
+        //не надо каждый раз загружать
         this.props.loadComments(this.props.page);
     }
 
