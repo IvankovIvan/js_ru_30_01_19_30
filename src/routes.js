@@ -17,6 +17,7 @@ export default (
             <Route path="articles" component={ArticleList}>
                 <Route path=":id" component={ArticlePage} />
             </Route>
+            {/*ты хочешь компонент внутри себя же рендерить, зачем?*/}
             <Route path="comments" component={Comments} >
                 <Route path=":page" component={Comments}/>
             </Route>
