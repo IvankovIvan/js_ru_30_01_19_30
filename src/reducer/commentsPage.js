@@ -10,6 +10,7 @@ const CommentPageModel = Record( {
 
 const commentPageDefault = new DefaultReducerState();
 
+//по сути это те же комменты, не обязательно для них отдельный редюсер заводить
 export default (state = commentPageDefault, action) => {
     const {type, response, payload} = action;
 
